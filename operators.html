@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>幹員介紹</title>
+  <meta name="description" content="三角洲行動（Delta Force）四大兵種與全部幹員的技能介紹，以及給 CS 老玩家的幹員選擇建議。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 原創插圖素材：幹員剪影與兵種圖示 -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="portrait" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="12" fill="currentColor"/>
+      <path d="M8 64c0-15 10-22 24-22s24 7 24 22z" fill="#000" fill-opacity=".3"/>
+      <circle cx="32" cy="29" r="11" fill="#000" fill-opacity=".3"/>
+      <path d="M19 28a13 12 0 0 1 26 0z" fill="#000" fill-opacity=".5"/>
+      <rect x="18" y="26" width="28" height="3" rx="1.5" fill="#000" fill-opacity=".5"/>
+      <circle cx="50" cy="14" r="10" fill="#fff"/>
+    </symbol>
+    <symbol id="i-assault" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <path d="M12 1v6M12 17v6M1 12h6M17 12h6" stroke="currentColor" stroke-width="2.5"/>
+    </symbol>
+    <symbol id="i-support" viewBox="0 0 24 24">
+      <path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-engineer" viewBox="0 0 24 24">
+      <path d="M21 7.5a5.5 5.5 0 0 1-7.6 5.1L6 20a2.1 2.1 0 0 1-3-3l7.4-7.4A5.5 5.5 0 0 1 16.5 3L13 6.5l1 3.5 3.5 1z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-recon" viewBox="0 0 24 24">
+      <path d="M1 12s4-7.5 11-7.5S23 12 23 12s-4 7.5-11 7.5S1 12 1 12z" fill="currentColor"/>
+      <circle cx="12" cy="12" r="3.5" fill="#fff"/>
+    </symbol>
+  </svg>
+
+  <header>
+    <nav class="nav">
+      <a class="brand" href="index.html">三角洲攻略筆記</a>
+      <a href="index.html">首頁</a>
+      <a href="guide.html">入門到進階</a>
+      <a class="active" href="operators.html">幹員介紹</a>
+      <a href="keybinds.html">按鍵配置</a>
+      <a href="sensitivity.html">靈敏度換算</a>
+      <a href="setup.html">環境設定紀錄</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>幹員介紹</h1>
+      <p class="lead">四大兵種、18 位幹員，各自能做什麼？CS 老玩家該先選誰？</p>
+      <figure>
+        <img src="images/hero-operators.jpg" width="1600" height="946" alt="三名穿著迷彩戰術裝備、手持步槍的隊員合照">
+        <figcaption>Photo by <a href="https://unsplash.com/@vonyrazom" target="_blank" rel="noopener">Vony Razom</a> on <a href="https://unsplash.com/photos/OMQB3qvCTq4" target="_blank" rel="noopener">Unsplash</a></figcaption>
+      </figure>
+    </section>
+
+    <div class="note">幹員插圖是本站原創的示意圖，<strong>不是遊戲官方角色圖</strong>：顏色代表兵種，右上角是兵種圖示。資料整理自 2026 年 10 月（Reorientation 賽季）的攻略網站，之後改版可能有變動。中文代號以常見譯名為主，台服譯名可能不同；不確定的只列英文代號。</div>
+
+    <h2>四大兵種</h2>
+    <div class="class-grid">
+      <div class="class-box assault">
+        <svg class="class-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-assault"/></svg>
+        <div><strong>突擊 Assault</strong><p>衝鋒、近戰壓制。開鏡移動更快，負責打開局面。</p></div>
+      </div>
+      <div class="class-box support">
+        <svg class="class-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-support"/></svg>
+        <div><strong>支援 Support</strong><p>補血、救人、煙霧掩護。救隊友速度更快。</p></div>
+      </div>
+      <div class="class-box engineer">
+        <svg class="class-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-engineer"/></svg>
+        <div><strong>工程 Engineer</strong><p>反載具、防守器材、區域控制。可用焊槍切割與修理。</p></div>
+      </div>
+      <div class="class-box recon">
+        <svg class="class-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-recon"/></svg>
+        <div><strong>偵察 Recon</strong><p>偵查、標記敵人位置，提供全隊情報。</p></div>
+      </div>
+    </div>
+
+    <h2>突擊 Assault</h2>
+    <div class="op-grid">
+      <div class="op assault">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="威龍 示意插圖"><use href="#portrait"/><use href="#i-assault" x="42" y="6" width="16" height="16"/><text x="32" y="58">VY</text></svg>
+        <div><h3>威龍 <span>Vyron</span></h3>
+          <ul><li>推進裝置，可往任意方向快速衝出</li><li>壓縮空氣發射器</li><li>黏性高爆炸藥</li></ul></div>
+      </div>
+      <div class="op assault">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="紅狼 示意插圖"><use href="#portrait"/><use href="#i-assault" x="42" y="6" width="16" height="16"/><text x="32" y="58">DW</text></svg>
+        <div><h3>紅狼 <span>D-Wolf</span></h3>
+          <ul><li>外骨骼超載：高速衝刺與滑鏟</li><li>擊倒敵人後回血</li><li>三聯裝榴彈（黏性手雷）</li></ul></div>
+      </div>
+      <div class="op assault">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="無名 示意插圖"><use href="#portrait"/><use href="#i-assault" x="42" y="6" width="16" height="16"/><text x="32" y="58">NX</text></svg>
+        <div><h3>無名 <span>Nox</span></h3>
+          <ul><li>干擾器：移動靜音並加速</li><li>追蹤飛盤：造成持續傷害並減速</li><li>被他打傷的敵人回血、救援變慢</li></ul></div>
+      </div>
+      <div class="op assault">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="疾風 示意插圖"><use href="#portrait"/><use href="#i-assault" x="42" y="6" width="16" height="16"/><text x="32" y="58">TP</text></svg>
+        <div><h3>疾風 <span>Tempest</span></h3>
+          <ul><li>鑽破掩體，震暈後方敵人</li><li>翻滾、安全繩拉回原位</li><li>烽火地帶可自救一次</li></ul></div>
+      </div>
+    </div>
+
+    <h2>支援 Support</h2>
+    <div class="op-grid">
+      <div class="op support">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="蜂醫 示意插圖"><use href="#portrait"/><use href="#i-support" x="42" y="6" width="16" height="16"/><text x="32" y="58">ST</text></svg>
+        <div><h3>蜂醫 <span>Stinger</span></h3>
+          <ul><li>自動追蹤的治療手槍，可遠距補血</li><li>手動操控的煙霧無人機</li><li>烽火地帶救人不扣血量上限</li></ul></div>
+      </div>
+      <div class="op support">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="蠱 示意插圖"><use href="#portrait"/><use href="#i-support" x="42" y="6" width="16" height="16"/><text x="32" y="58">TX</text></svg>
+        <div><h3>蠱 <span>Toxik</span></h3>
+          <ul><li>致盲毒氣</li><li>增益無人機：強化附近隊友</li><li>蜂群無人機：強化隊友、削弱敵人</li></ul></div>
+      </div>
+      <div class="op support">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="蝶 示意插圖"><use href="#portrait"/><use href="#i-support" x="42" y="6" width="16" height="16"/><text x="32" y="58">VL</text></svg>
+        <div><h3>蝶 <span>Vlinder</span></h3>
+          <ul><li>救援無人機：遠距救起倒地隊友</li><li>醫療無人機：跟隨隊友，治療附近的人</li></ul></div>
+      </div>
+      <div class="op support">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="Rover 示意插圖"><use href="#portrait"/><use href="#i-support" x="42" y="6" width="16" height="16"/><text x="32" y="58">RV</text></svg>
+        <div><h3>Rover</h3>
+          <ul><li>軍犬 Clover：追蹤並標記最近的敵人</li><li>飛鏢步槍：烽火地帶可治療肢體，並削減敵人血量上限</li><li>2026 年 9 月新加入，季票免費路線可解鎖</li></ul></div>
+      </div>
+      <div class="op support">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="Branko 示意插圖"><use href="#portrait"/><use href="#i-support" x="42" y="6" width="16" height="16"/><text x="32" y="58">BR</text></svg>
+        <div><h3>Branko</h3>
+          <ul><li>參考資料未詳細列出技能，請以遊戲內說明為準</li></ul></div>
+      </div>
+    </div>
+
+    <h2>工程 Engineer</h2>
+    <div class="op-grid">
+      <div class="op engineer">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="牧羊人 示意插圖"><use href="#portrait"/><use href="#i-engineer" x="42" y="6" width="16" height="16"/><text x="32" y="58">SH</text></svg>
+        <div><h3>牧羊人 <span>Shepherd</span></h3>
+          <ul><li>聲波無人機：壓制敵人</li><li>可貼在牆上的聲波陷阱</li><li>受到的爆炸傷害較低</li></ul></div>
+      </div>
+      <div class="op engineer">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="烏魯魯 示意插圖"><use href="#portrait"/><use href="#i-engineer" x="42" y="6" width="16" height="16"/><text x="32" y="58">UL</text></svg>
+        <div><h3>烏魯魯 <span>Uluru</span></h3>
+          <ul><li>導引彈藥，空中分裂成四顆炸彈</li><li>速凝混凝土掩體</li><li>燃燒彈，可燒掉掩體</li></ul></div>
+      </div>
+      <div class="op engineer">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="深藍 示意插圖"><use href="#portrait"/><use href="#i-engineer" x="42" y="6" width="16" height="16"/><text x="32" y="58">SN</text></svg>
+        <div><h3>深藍 <span>Sineva</span></h3>
+          <ul><li>重型排爆裝，附全身防爆盾</li><li>鉤爪槍：把敵人拉過來</li><li>鐵絲網</li></ul></div>
+      </div>
+      <div class="op engineer">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="Gizmo 示意插圖"><use href="#portrait"/><use href="#i-engineer" x="42" y="6" width="16" height="16"/><text x="32" y="58">GZ</text></svg>
+        <div><h3>Gizmo</h3>
+          <ul><li>會腐蝕敵人的爬行機器</li><li>智慧煙霧地雷</li><li>巡邏模組，會對抓到的人撒網</li></ul></div>
+      </div>
+      <div class="op engineer">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="N-Two 示意插圖"><use href="#portrait"/><use href="#i-engineer" x="42" y="6" width="16" height="16"/><text x="32" y="58">N2</text></svg>
+        <div><h3>N-Two</h3>
+          <ul><li>冰凍手雷與冷凍罐</li><li>寒冷讓敵人減速，直到凍住</li><li>區域控制能力強</li></ul></div>
+      </div>
+    </div>
+
+    <h2>偵察 Recon</h2>
+    <div class="op-grid">
+      <div class="op recon">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="露娜 示意插圖"><use href="#portrait"/><use href="#i-recon" x="42" y="6" width="16" height="16"/><text x="32" y="58">LU</text></svg>
+        <div><h3>露娜 <span>Luna</span></h3>
+          <ul><li>偵測箭：顯示附近敵人位置</li><li>電擊箭</li><li>被她打中的敵人會被標記</li></ul></div>
+      </div>
+      <div class="op recon">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="駭爪 示意插圖"><use href="#portrait"/><use href="#i-recon" x="42" y="6" width="16" height="16"/><text x="32" y="58">HC</text></svg>
+        <div><h3>駭爪 <span>Hackclaw</span></h3>
+          <ul><li>追蹤敵人訊號、訊號解碼器</li><li>閃光無人機致盲</li><li>資料飛刀：癱瘓電子設備</li></ul></div>
+      </div>
+      <div class="op recon">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="銀翼 示意插圖"><use href="#portrait"/><use href="#i-recon" x="42" y="6" width="16" height="16"/><text x="32" y="58">RP</text></svg>
+        <div><h3>銀翼 <span>Raptor</span></h3>
+          <ul><li>追蹤腳印</li><li>間諜攝影機，標記敵人</li><li>標記無人機，可投 EMP 手雷</li></ul></div>
+      </div>
+      <div class="op recon">
+        <svg class="avatar" viewBox="0 0 64 64" role="img" aria-label="Morse 示意插圖"><use href="#portrait"/><use href="#i-recon" x="42" y="6" width="16" height="16"/><text x="32" y="58">MO</text></svg>
+        <div><h3>Morse</h3>
+          <ul><li>聲納裝置：計算並標記敵人數量</li><li>干擾器：讓敵人減速、迷失方向</li><li>烽火地帶聽得更遠</li></ul></div>
+      </div>
+    </div>
+
+    <h2>CS 老玩家怎麼選</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>情境</th><th>建議幹員</th><th>理由</th></tr></thead>
+        <tbody>
+          <tr><td>烽火地帶單排</td><td>露娜、駭爪</td><td>偵察資訊能彌補還不熟的地圖，先知道敵人在哪</td></tr>
+          <tr><td>跟孩子雙排</td><td>蜂醫、蠱、Rover</td><td>跟在隊友後面補血、救人、加增益，配合度最高</td></tr>
+          <tr><td>想發揮槍法</td><td>無名、紅狼</td><td>機動性高，適合主動找人打</td></tr>
+          <tr><td>喜歡守點</td><td>N-Two、牧羊人</td><td>區域控制和陷阱，很像 CS 的道具守點</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>2026 年 10 月的強度排行把 Gizmo、Morse、疾風評得較低，建議等改版加強後再練。</p>
+
+    <h2>結論</h2>
+    <div class="conclusion">
+      <p>新手先選<strong>偵察</strong>（露娜、駭爪）拿資訊，或選<strong>支援</strong>（蜂醫、蠱）跟著孩子補位。熟悉地圖和節奏後，再換突擊幹員發揮 CS 的槍法。</p>
+    </div>
+
+    <h2>參考來源</h2>
+    <ul>
+      <li><a href="https://senseos.gg/guides/delta-force/operators-list/" target="_blank" rel="noopener">Delta Force Operators List: All 17 by Class and Season（senseos.gg）</a></li>
+      <li><a href="https://timesaver.gg/blog/delta-force-best-operators-tier-list" target="_blank" rel="noopener">Delta Force Best Operators Tier List, October 2026（timesaver.gg）</a></li>
+      <li><a href="https://dfloadouts.com/guides/delta-force-operator-tier-list/" target="_blank" rel="noopener">Delta Force Operators: Classes, Gadgets and Tier Guide（dfloadouts.com）</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Delta_Force_(2025_video_game)" target="_blank" rel="noopener">Delta Force (2025 video game)（Wikipedia）</a></li>
+    </ul>
+  </main>
+
+  <footer>整理自與 Claude 的對話 · 2026 年 11 月 · <a href="index.html">回首頁</a></footer>
+</body>
+</html>
