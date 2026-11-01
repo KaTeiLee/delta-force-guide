@@ -366,3 +366,8 @@ th { font-size: 0.85rem; }
   .nav { gap: 2px 12px; }
   .nav .brand { width: 100%; }
 }
+
+/* 導覽列項目較多，縮小間距以維持單行 */
+.nav { max-width: 1040px; gap: 2px 13px; }
+.nav a { font-size: 0.88rem; }
+.nav .brand { font-size: 1.1rem; }
