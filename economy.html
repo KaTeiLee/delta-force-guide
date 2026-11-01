@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>經濟系統</title>
+  <meta name="description" content="三角洲行動烽火地帶的經濟三本柱：護甲 vs. 子彈穿透、高價值物資、特勤處，附 CS2 對照說明。">
+  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    .rarity { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 12px 0; }
+    .rarity span { font-family: var(--mono); font-weight: 700; font-size: 0.85rem; padding: 3px 12px; border: 1px solid; }
+    .rarity .sep { border: none; padding: 0; color: var(--muted); }
+    .loop { list-style: none; padding: 0; margin: 12px 0; display: grid; gap: 6px; counter-reset: loop; }
+    .loop li { counter-increment: loop; background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 8px 14px; }
+    .loop li::before { content: "0" counter(loop) " "; font-family: var(--mono); color: var(--accent); font-weight: 700; margin-right: 6px; }
+    .loop.bad li { border-left-color: #ff6b6b; }
+    .loop.bad li::before { color: #ff6b6b; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="index.html">三角洲攻略筆記</a>
+      <a href="index.html">首頁</a>
+      <a href="guide.html">入門到進階</a>
+      <a class="active" href="economy.html">經濟系統</a>
+      <a href="operators.html">幹員介紹</a>
+      <a href="keybinds.html">按鍵配置</a>
+      <a href="sensitivity.html">靈敏度換算</a>
+      <a href="esports.html">職業賽事</a>
+      <a href="setup.html">環境設定紀錄</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>經濟系統</h1>
+      <p class="lead">打得贏、帶得對、賺得穩：烽火地帶的經濟三本柱，用 CS2 的概念對照說明。</p>
+      <figure>
+        <img src="images/hero-economy.jpg" width="1600" height="1000" alt="靠在迷彩帆布旁的戰術背包和背心">
+        <figcaption>Photo by <a href="https://unsplash.com/@taiwangun" target="_blank" rel="noopener">Taiwangun</a> on <a href="https://unsplash.com/photos/sp73DhE4PPk" target="_blank" rel="noopener">Unsplash</a></figcaption>
+      </figure>
+    </section>
+
+    <div class="note">社群攻略的具體數值常有出入，這裡講的是大原則；精確數字請以遊戲內說明為準。</div>
+
+    <h2>一、護甲等級 vs. 子彈穿透等級</h2>
+    <p>在 CS2，有沒有穿甲只差一點傷害，爆頭幾乎都是致命的。三角洲完全不同：<strong>護甲和子彈各有等級，誰的等級高，大致決定誰贏。</strong></p>
+
+    <h3>規則</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>情況</th><th>結果</th></tr></thead>
+        <tbody>
+          <tr><td><strong>子彈等級 &gt; 護甲等級</strong></td><td>子彈打得穿，傷害正常打進身體</td></tr>
+          <tr><td><strong>子彈等級 = 護甲等級</strong></td><td>灰色地帶：能打進一部分傷害，但會被削弱</td></tr>
+          <tr><td><strong>子彈等級 &lt; 護甲等級</strong></td><td>大多被擋下，主要只是磨掉對方的護甲耐久</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>耐久度</h3>
+    <ul>
+      <li><strong>每一發子彈都會磨損護甲耐久</strong>，不管有沒有穿透。</li>
+      <li>耐久歸零，那件甲就等於沒穿，後面的子彈全部打進身體。</li>
+      <li>所以低等子彈也不是完全沒用：連續命中可以把甲打爛，只是要花很多發。</li>
+    </ul>
+
+    <h3>實戰怎麼用</h3>
+    <ol>
+      <li><strong>進場前先看自己的子彈等級</strong>。用低等子彈，就避免跟穿高等甲的人正面對槍。</li>
+      <li><strong>交火前先看對方穿什麼甲</strong>。打不穿就不要硬拼：繞路、躲開，或等他跟別人打完。</li>
+      <li><strong>打不穿甲時，打護甲沒保護到的部位</strong>，例如手腳。傷害雖然較低，但不會被甲吃掉。</li>
+      <li><strong>好子彈留給重要的戰鬥</strong>。高等子彈很貴，可以專門留一個彈匣給硬仗。</li>
+      <li><strong>出場後記得修甲</strong>。耐久不夠的甲，下一局等於半件甲。</li>
+    </ol>
+    <p><strong>CS2 類比：</strong>就像 CS2 的經濟局。eco 局拿手槍打全甲步槍，不是打不贏，而是要靠位置和時機；正面對拼一定虧。</p>
+
+    <h2>二、學會看高價值物資</h2>
+
+    <h3>稀有度顏色</h3>
+    <p>物資通常用顏色區分稀有度，一般是：</p>
+    <div class="rarity" aria-label="稀有度由低到高：白、綠、藍、紫、金、紅">
+      <span style="color:#e8ece9;border-color:#8b968f">白</span><span class="sep">‹</span>
+      <span style="color:#6ee08f;border-color:#3f9e5c">綠</span><span class="sep">‹</span>
+      <span style="color:#6fb8ff;border-color:#3a7fc2">藍</span><span class="sep">‹</span>
+      <span style="color:#c4a6ff;border-color:#8a63d6">紫</span><span class="sep">‹</span>
+      <span style="color:#ffd35c;border-color:#c79b1e">金</span><span class="sep">‹</span>
+      <span style="color:#ff7b7b;border-color:#d14545">紅</span>
+    </div>
+    <p>玩家口中的「<strong>大紅</strong>」，指的是佔 6 格以上的紅色高價值道具，一件就能讓整局大賺。</p>
+
+    <h3>判斷原則：看「單格價值」</h3>
+    <p>背包格子有限，所以重點不是「這東西多少錢」，而是「<strong>每一格值多少錢</strong>」：</p>
+    <ul>
+      <li>一件佔 1 格、值 2 萬的小東西，比一件佔 6 格、值 6 萬的大東西更划算（每格 2 萬 vs. 每格 1 萬）。</li>
+      <li>背包滿了，<strong>先丟單格價值最低的</strong>，換成更好的。</li>
+      <li>有攻略指出，有些藍色小物資的單格價值也很穩，不一定只有紅色才值錢。</li>
+    </ul>
+
+    <h3>實戰怎麼用</h3>
+    <ol>
+      <li><strong>最值錢的小東西放安全箱</strong>，死了也不會掉。</li>
+      <li><strong>不要什麼都撿</strong>。翻找會發出聲音，也花時間，撿太多低價值物品反而增加被打的風險。</li>
+      <li><strong>拿到大紅就認真考慮撤離</strong>。這時候風險和收益已經失衡，再貪通常是送給別人。</li>
+      <li><strong>價格會隨版本和市場波動</strong>，拿不準的東西可以在交易行查即時價格。</li>
+    </ol>
+    <p><strong>CS2 類比：</strong>像決定要不要撿地上的 AWP。值錢，但撿起來的那幾秒和移動速度的代價，你要算得出來。</p>
+
+    <h2>三、善用特勤處（經營系統）</h2>
+
+    <h3>是什麼</h3>
+    <p>特勤處是你的<strong>基地</strong>，有多個製作設施：</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>設施</th><th>主要產出</th></tr></thead>
+        <tbody>
+          <tr><td>技術中心</td><td>瞄具等配件</td></tr>
+          <tr><td>工作台</td><td>子彈等</td></tr>
+          <tr><td>製藥台</td><td>醫療品、護甲維修包</td></tr>
+          <tr><td>防具台</td><td>護甲、胸掛、背包</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>投入材料後，設施會<strong>用現實時間慢慢製作</strong>，就算你下線也會繼續做。</p>
+
+    <h3>怎麼賺錢</h3>
+    <ol>
+      <li><strong>自己做取代買</strong>：子彈、醫療品、維修包自己做，比在交易行買便宜，省下的就是賺到的。</li>
+      <li><strong>做完拿去賣</strong>：有些成品在交易行比材料總價高，賣掉就是穩定收入。</li>
+      <li><strong>讓設施不要閒著</strong>：每次上線先收成品、排下一輪，跟手機遊戲收菜一樣。下線前排長時間的製作最划算。</li>
+      <li><strong>提前囤常用材料</strong>：有攻略建議，新賽季開始時材料需求大、價格容易漲，可以先囤一些常用材料。</li>
+      <li><strong>升級設施</strong>：升級後能做更好的東西，或做得更快。</li>
+    </ol>
+    <p><strong>CS2 類比：</strong>CS2 沒有對應系統。可以想成「每天自動入帳的經濟局補助」：就算這局死光，倉庫還是穩定進帳，讓你敢帶好裝備進場。</p>
+
+    <h2>三者怎麼串在一起</h2>
+    <h3>良性循環</h3>
+    <ol class="loop">
+      <li>特勤處穩定產出</li>
+      <li>有錢帶高等子彈和護甲</li>
+      <li>交火打得贏</li>
+      <li>活著帶出高價值物資</li>
+      <li>賣錢、升級特勤處，回到第一步，循環變強</li>
+    </ol>
+    <h3>新手常見的惡性循環</h3>
+    <ol class="loop bad">
+      <li>裝備太差，打不贏</li>
+      <li>死了，身上全掉</li>
+      <li>沒錢，下一局裝備更差</li>
+    </ol>
+
+    <h2>結論</h2>
+    <div class="conclusion">
+      <p>烽火地帶的經濟三本柱是<strong>打得贏（護甲 vs. 子彈）、帶得對（物資）、賺得穩（特勤處）</strong>。新手最需要的是特勤處：即使這幾局一直輸，倉庫還是持續有收入，這是打破惡性循環的關鍵。</p>
+    </div>
+
+    <h2>參考來源</h2>
+    <ul>
+      <li><a href="https://timesaver.gg/blog/delta-force-ammo-armor-penetration-guide" target="_blank" rel="noopener">Delta Force ammo armor penetration guide（timesaver.gg）</a></li>
+      <li><a href="https://digitalphablet.com/understanding-armor-and-bullet-impact-mechanics-in-delta-force/" target="_blank" rel="noopener">Understanding Armor and Bullet Impact Mechanics in Delta Force（digitalphablet）</a></li>
+      <li><a href="https://www.topuplive.com/news/delta-force-ammo-chart-guide.html" target="_blank" rel="noopener">Delta Force ammo chart guide（topuplive）</a></li>
+      <li><a href="https://m.18183.com/gonglue/202606/etnbnl63.html" target="_blank" rel="noopener">三角洲行動 S10 賽季 3x3 特勤處攻略（18183）</a></li>
+      <li><a href="https://news.17173.com/content/11192025/140900415.shtml" target="_blank" rel="noopener">三角洲行動高價值物資攻略（17173，2025/11）</a></li>
+      <li><a href="https://news.17173.com/content/03282026/094711254.shtml" target="_blank" rel="noopener">三角洲行動收集品攻略（17173，2026/03）</a></li>
+      <li><a href="https://www.bilibili.com/read/cv43814180" target="_blank" rel="noopener">三角洲行動物資攻略（bilibili）</a></li>
+    </ul>
+  </main>
+
+  <footer>整理自與 Claude 的對話 · 2026 年 11 月 · <a href="index.html">回首頁</a></footer>
+</body>
+</html>
