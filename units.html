@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>真實部隊比較</title>
+  <meta name="description" content="遊戲名字的由來：美國陸軍三角洲部隊（Delta Force）與海軍海豹六隊（SEAL Team 6 / DEVGRU）的比較說明。">
+  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    .vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: stretch; margin: 16px 0; }
+    .vs .side { background: var(--surface); border: 1px solid var(--border); padding: 14px 16px; }
+    .vs .army { border-top: 3px solid #c9b26b; }
+    .vs .navy { border-top: 3px solid #5cb0ff; }
+    .vs .side .tag2 { font-family: var(--mono); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; }
+    .vs .army .tag2 { color: #d9c47e; }
+    .vs .navy .tag2 { color: #7cc0ff; }
+    .vs .side h3 { margin: 4px 0 6px; color: #fff; }
+    .vs .side p { margin: 0; color: var(--muted); }
+    .vs .mid { align-self: center; font-family: var(--display); font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+    @media (max-width: 600px) { .vs { grid-template-columns: 1fr; } .vs .mid { text-align: center; } }
+    .timeline { list-style: none; padding: 0; margin: 12px 0; border-left: 2px solid var(--border); }
+    .timeline li { position: relative; padding: 0 0 14px 18px; }
+    .timeline li::before { content: ""; position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; background: var(--accent); }
+    .timeline .yr { font-family: var(--mono); font-weight: 700; color: var(--accent); margin-right: 8px; }
+    .timeline .who { font-family: var(--mono); font-size: 0.8rem; padding: 0 6px; margin-right: 6px; border: 1px solid; }
+    .timeline .who.d { color: #d9c47e; border-color: #8f7d3f; }
+    .timeline .who.s { color: #7cc0ff; border-color: #3a7fc2; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="index.html">三角洲攻略筆記</a>
+      <a href="index.html">首頁</a>
+      <a href="guide.html">入門到進階</a>
+      <a href="economy.html">經濟系統</a>
+      <a href="operators.html">幹員介紹</a>
+      <a href="keybinds.html">按鍵配置</a>
+      <a href="sensitivity.html">靈敏度換算</a>
+      <a class="active" href="units.html">真實部隊</a>
+      <a href="esports.html">職業賽事</a>
+      <a href="setup.html">環境設定紀錄</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Delta Force vs. SEAL Team 6</h1>
+      <p class="lead">遊戲名字的由來：美國陸軍三角洲部隊和海軍海豹六隊（DEVGRU），兩支最頂尖的特種部隊有什麼不同？</p>
+      <figure>
+        <img src="images/hero-units.jpg" width="1600" height="1000" alt="黑白照片：一架黑鷹直升機低空飛過起霧的水面，遠處有快艇激起水花">
+        <figcaption>Photo by <a href="https://unsplash.com/@jneugebauer" target="_blank" rel="noopener">Jonas Neugebauer</a> on <a href="https://unsplash.com/photos/mpFEE1Hkyow" target="_blank" rel="noopener">Unsplash</a></figcaption>
+      </figure>
+    </section>
+
+    <div class="note">這兩支部隊的任務大多是機密，官方很少公開細節。這裡整理的是公開報導和歷史資料，人數、選訓細節等說法各來源不一。遊戲裡的劇情和角色都是虛構的。</div>
+
+    <h2>先認識兩支部隊</h2>
+    <div class="vs">
+      <div class="side army">
+        <span class="tag2">U.S. ARMY 陸軍</span>
+        <h3>三角洲部隊 Delta Force</h3>
+        <p>正式名稱「第一特種部隊作戰分遣隊－D」（1st SFOD-D）。遊戲《三角洲行動》的名字就是來自這支部隊。</p>
+      </div>
+      <div class="mid">VS</div>
+      <div class="side navy">
+        <span class="tag2">U.S. NAVY 海軍</span>
+        <h3>海豹六隊 SEAL Team 6</h3>
+        <p>正式名稱「海軍特種作戰發展大隊」（DEVGRU）。「SEAL Team 6」是大家習慣的舊稱。</p>
+      </div>
+    </div>
+    <p><strong>CS 老玩家一定見過：</strong>CS:GO 時代的 CT 陣營裡就有 SEAL Team 6 的角色模型。現在換成玩以 Delta 命名的遊戲，剛好認識一下這對「美軍雙雄」。</p>
+
+    <h2>一張表看懂差異</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>項目</th><th>Delta Force</th><th>SEAL Team 6 / DEVGRU</th></tr></thead>
+        <tbody>
+          <tr><td>軍種</td><td>陸軍</td><td>海軍</td></tr>
+          <tr><td>成立</td><td>1977 年</td><td>1980 年（1987 年改名 DEVGRU）</td></tr>
+          <tr><td>創立者</td><td>查理・貝克威斯上校（Charles Beckwith）</td><td>理查・馬辛柯（Richard Marcinko）</td></tr>
+          <tr><td>學習對象</td><td>英國特種空勤團（SAS）</td><td>為了補足海上反恐能力而成立</td></tr>
+          <tr><td>基地</td><td>北卡羅來納州布拉格堡（Fort Bragg）</td><td>維吉尼亞州維吉尼亞海灘的 Dam Neck</td></tr>
+          <tr><td>上級指揮</td><td colspan="2">兩者都隸屬「聯合特種作戰司令部」（JSOC），常被稱為美軍的「Tier 1」特種任務部隊</td></tr>
+          <tr><td>人員來源</td><td>主要來自陸軍，例如遊騎兵、綠扁帽；其他軍種也可報名</td><td>只從現役海豹部隊隊員中挑選</td></tr>
+          <tr><td>選訓</td><td>山區長距離負重越野等嚴苛選拔，通過後再接受作戰訓練課程</td><td>評估選拔後進入名為「Green Team」的訓練課程</td></tr>
+          <tr><td>專長</td><td>陸地反恐、人質救援、城鎮突擊</td><td>海上反恐（船艦、港口、鑽油平台），也大量執行陸地任務</td></tr>
+          <tr><td>曝光度</td><td>一向非常低調</td><td>2011 年擊斃賓拉登後曝光大增，相關書籍和電影很多</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>兩支部隊的關係</h2>
+    <ul>
+      <li><strong>同一個源頭</strong>：1980 年 Delta 參與的伊朗人質救援行動「鷹爪行動」失敗，美軍檢討後決定加強特種作戰能力，海豹六隊就是在這之後成立的。</li>
+      <li><strong>既是隊友也是對手</strong>：兩隊常被拿來比較，彼此有競爭心，但實際上同屬 JSOC，很多任務會一起執行或互相支援。</li>
+      <li><strong>分工看任務</strong>：一般來說海上和沿海任務偏向 DEVGRU，內陸任務偏向 Delta，但實務上兩者的任務範圍高度重疊。</li>
+    </ul>
+
+    <h2>知名行動時間軸</h2>
+    <ul class="timeline">
+      <li><span class="yr">1980</span><span class="who d">Delta</span><strong>鷹爪行動</strong>：伊朗人質救援失敗，促成海豹六隊和美軍特種航空部隊的成立。</li>
+      <li><span class="yr">1993</span><span class="who d">Delta</span><strong>摩加迪休之戰</strong>：與遊騎兵在索馬利亞執行任務，兩架黑鷹直升機被擊落，也就是電影《黑鷹計劃》的故事。</li>
+      <li><span class="yr">2003</span><span class="who d">Delta</span><strong>逮捕海珊</strong>：參與在伊拉克逮捕前總統海珊的行動。</li>
+      <li><span class="yr">2009</span><span class="who s">DEVGRU</span><strong>阿拉巴馬號營救</strong>：狙擊手在海上擊斃索馬利亞海盜、救出被挾持的船長，改編成電影《怒海劫》。</li>
+      <li><span class="yr">2011</span><span class="who s">DEVGRU</span><strong>海神之矛行動</strong>：在巴基斯坦擊斃賓拉登。</li>
+      <li><span class="yr">2011</span><span class="who s">DEVGRU</span><strong>Extortion 17</strong>：運輸直升機在阿富汗被擊落，是 DEVGRU 史上傷亡最慘重的一次。</li>
+      <li><span class="yr">2019</span><span class="who d">Delta</span><strong>突襲巴格達迪</strong>：在敘利亞突襲伊斯蘭國首領巴格達迪的藏身處。</li>
+      <li><span class="yr">2026</span><span class="who d">Delta</span><strong>逮捕馬杜洛</strong>：據 CBS 等媒體報導，Delta 於 1 月 3 日在委內瑞拉逮捕總統馬杜洛；部分細節仍來自匿名消息。</li>
+    </ul>
+
+    <h2>跟遊戲的關係</h2>
+    <ul>
+      <li><strong>遊戲名字</strong>：《三角洲行動》（Delta Force）以三角洲部隊命名，同名遊戲系列從 1998 年就有了。</li>
+      <li><strong>黑鷹墜落戰役</strong>：遊戲裡的「黑鷹墜落」合作戰役，重現 1993 年摩加迪休之戰。它致敬 2001 年電影和 2003 年的經典遊戲《Delta Force: Black Hawk Down》，2025 年 2 月推出，共七章、四人合作。</li>
+      <li><strong>現實 vs. 遊戲</strong>：真實的特種部隊沒有幹員技能、也不會「搜打撤」。遊戲取材自真實部隊的形象，但玩法、角色和劇情都是虛構的。</li>
+    </ul>
+
+    <h2>給孩子的小知識</h2>
+    <ul>
+      <li>「Delta」是希臘字母 Δ，網站的 favicon 三角形就是從這裡來的。</li>
+      <li>真實的特種部隊隊員要經過好幾年的訓練和非常嚴格的選拔，體能、判斷力、團隊合作缺一不可。</li>
+      <li>遊戲裡死了可以重來，現實裡不行。這些行動背後都有真實的人和代價，可以跟孩子聊聊這一點。</li>
+    </ul>
+
+    <h2>結論</h2>
+    <div class="conclusion">
+      <p><strong>Delta 是陸軍、DEVGRU 是海軍</strong>，兩者同屬美軍最頂尖的 Tier 1 部隊。Delta 以陸地反恐和低調聞名，也是遊戲名字的由來；DEVGRU 擅長海上任務，因擊斃賓拉登而廣為人知。兩隊既競爭也合作，是美軍特種作戰的兩根支柱。</p>
+    </div>
+
+    <h2>參考來源</h2>
+    <ul>
+      <li><a href="https://www.history.com/articles/seal-team-six-and-delta-force-6-key-differences" target="_blank" rel="noopener">SEAL Team Six and Delta Force: 6 Key Differences（History.com）</a></li>
+      <li><a href="https://sofrep.com/news/differences-delta-and-seal-team-6/" target="_blank" rel="noopener">Differences between Delta and SEAL Team 6（SOFREP）</a></li>
+      <li><a href="https://wearethemighty.com/popular/seal-team-6-delta-force" target="_blank" rel="noopener">5 key differences between Delta Force and SEAL Team 6（We Are The Mighty）</a></li>
+      <li><a href="https://www.gijobs.com/differences-seal-team-6-delta-force/" target="_blank" rel="noopener">Differences between SEAL Team 6 and Delta Force（GI Jobs）</a></li>
+      <li><a href="https://www.cbsnews.com/amp/texas/news/u-s-officials-reveal-new-details-on-the-covert-operation-to-capture-maduro" target="_blank" rel="noopener">New details on Maduro capture revealed（CBS News）</a></li>
+      <li><a href="https://newsweek.com/what-delta-force-us-military-unit-behind-venezuela-operation-11304839" target="_blank" rel="noopener">What is Delta Force, the US military unit behind Venezuela operation（Newsweek）</a></li>
+      <li><a href="https://game.intel.com/stories/this-is-not-a-drill-delta-force-unleashes-black-hawk-down-campaign/" target="_blank" rel="noopener">Delta Force Unleashes Black Hawk Down Campaign（Intel Gaming）</a></li>
+      <li><a href="https://gamingnexus.com/News/66472/Delta-Force-is-launching-its-Black-Hawk-Down-single-player-campaign-on-February-21st" target="_blank" rel="noopener">Delta Force Black Hawk Down campaign launches February 21st（Gaming Nexus）</a></li>
+    </ul>
+  </main>
+
+  <footer>整理自與 Claude 的對話 · 2026 年 11 月 · <a href="index.html">回首頁</a></footer>
+</body>
+</html>
