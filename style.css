@@ -57,10 +57,35 @@ main {
   padding: 24px 16px 64px;
 }
 
-h1 { font-size: 1.9rem; line-height: 1.3; margin: 8px 0 4px; }
-h2 { font-size: 1.35rem; margin-top: 2.2em; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
-h3 { font-size: 1.1rem; margin-top: 1.6em; }
-.lead { color: var(--muted); margin-top: 0; }
+h1 { font-size: 2.1rem; line-height: 1.3; margin: 8px 0 6px; }
+h2 { font-size: 1.4rem; margin-top: 2.2em; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+h2::before { content: ""; display: inline-block; width: 6px; height: 1em; background: var(--accent); border-radius: 3px; margin-right: 10px; vertical-align: -0.12em; }
+h3 { font-size: 1.12rem; margin-top: 1.6em; }
+.lead { color: var(--muted); font-size: 1.1rem; margin-top: 0; }
+
+/* HERO：圖片等比例縮放，寬度不超過內文區 */
+.hero { margin-bottom: 8px; }
+.hero figure { margin: 18px 0 0; }
+.hero img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.hero figcaption { font-size: 0.8rem; color: var(--muted); margin-top: 6px; text-align: right; }
+.hero figcaption a { color: var(--muted); }
+
+.conclusion {
+  border: 2px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.conclusion p:first-child { margin-top: 0; }
+.conclusion p:last-child { margin-bottom: 0; }
 
 a { color: var(--accent); }
 

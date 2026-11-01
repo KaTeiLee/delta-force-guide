@@ -19,8 +19,14 @@
   </header>
 
   <main>
-    <h1>環境設定紀錄</h1>
-    <p class="lead">這個網站是在 Windows 上用 Claude Code（Claude 桌面版）一步步做出來的。以下是過程紀錄。</p>
+    <section class="hero">
+      <h1>環境設定紀錄</h1>
+      <p class="lead">從零開始：在 Windows 上用 Claude Code 裝好工具、登入 GitHub，再把網站架上 GitHub Pages。</p>
+      <figure>
+        <img src="images/hero-setup.jpg" width="1600" height="1067" alt="螢幕上顯示的彩色 HTML 程式碼">
+        <figcaption>Photo by <a href="https://unsplash.com/@florianolv" target="_blank" rel="noopener">Florian Olivo</a> on <a href="https://unsplash.com/photos/4hbJ-eymZ1o" target="_blank" rel="noopener">Unsplash</a></figcaption>
+      </figure>
+    </section>
 
     <h2>1. 語言偏好</h2>
     <p>在使用者層級的 <code>CLAUDE.md</code> 寫下「一律使用繁體中文回答，專有名詞可保留英文」。Claude Code 每次開對話都會讀這個檔案，所以不管在哪個專案都適用。</p>
@@ -59,10 +65,16 @@
     <h2>5. 架站：GitHub Pages</h2>
     <ol>
       <li>把對話整理成這幾頁純 HTML + CSS 的靜態網站，不需要任何建置工具。</li>
+      <li>從 <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> 找免費授權的圖片放在每頁的 HERO 區，等比例縮放，寬度不超過內文區，並標註攝影師。</li>
       <li>用 <code>gh repo create</code> 建立公開 repo，並 push 程式碼。</li>
       <li>用 GitHub API 開啟 GitHub Pages，來源設為 <code>main</code> branch 的根目錄。</li>
       <li>用 Claude in Chrome 打開網址，逐頁檢查。</li>
     </ol>
+
+    <h2>結論</h2>
+    <div class="conclusion">
+      <p>整個過程本人只需要做三件事：安裝 Chrome extension、在 GitHub 按 Authorize、確認要公開網站。其他安裝、寫程式、上傳、檢查都由 Claude 在背景完成。</p>
+    </div>
   </main>
 
   <footer>整理自與 Claude 的對話 · 2026 年 11 月 · <a href="index.html">回首頁</a></footer>
