@@ -4,11 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>環境設定紀錄</title>
-  <meta name="description" content="這個網站是怎麼做出來的：用 Claude Code 安裝開發工具、登入 GitHub、架上 GitHub Pages。">
+  <meta name="description" content="這個網站是怎麼做出來的：爸爸用說的，AI agent 幫忙裝軟體、寫網站、架上網路。寫給孩子的 AI agent 入門。">
   <link rel="stylesheet" href="style.css?v=3">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    .compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 12px 0; }
+    .compare > div { background: var(--surface); border: 1px solid var(--border); padding: 14px 16px; }
+    .compare > div.agent { border-color: var(--accent-dim); background: var(--accent-soft); }
+    .compare strong { display: block; font-family: var(--display); font-size: 1.15rem; margin-bottom: 4px; }
+    .compare p { margin: 0; }
+    .mission { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 12px 16px; margin: 12px 0; }
+    .mission .no { font-family: var(--mono); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; color: var(--accent); }
+    .mission h3 { margin: 2px 0 8px; color: #fff; }
+    .say { font-family: var(--mono); background: var(--code-bg); border-left: 3px solid var(--warn); padding: 8px 12px; margin: 6px 0 8px; color: var(--text); }
+    .say::before { content: "你說 › "; color: var(--warn); font-weight: 700; }
+    .did { margin: 0; }
+    .did::before { content: "AI 做了 › "; font-family: var(--mono); color: var(--accent); font-weight: 700; }
+    .mission .lesson { margin: 8px 0 0; color: var(--muted); font-size: 0.95rem; }
+    .mission .lesson::before { content: "💡 "; }
+    details { background: var(--surface); border: 1px solid var(--border); padding: 10px 16px; margin: 16px 0; }
+    summary { cursor: pointer; font-weight: 700; color: var(--accent); }
+  </style>
 </head>
 <body>
   <header>
@@ -35,52 +53,167 @@
       </figure>
     </section>
 
-    <h2>1. 語言偏好</h2>
-    <p>在使用者層級的 <code>CLAUDE.md</code> 寫下「一律使用繁體中文回答，專有名詞可保留英文」。Claude Code 每次開對話都會讀這個檔案，所以不管在哪個專案都適用。</p>
+    <h2>寫在前面</h2>
+    <p>你現在看的這整個網站，<strong>爸爸一行程式都沒有自己寫</strong>。</p>
+    <p>爸爸只是用中文跟 AI 說「我想要什麼」，AI 就自己去裝軟體、上網找資料、寫網頁、找圖片、把網站放上網路，最後還打開瀏覽器一頁一頁檢查有沒有壞掉。</p>
+    <p>這種會<strong>自己動手做事</strong>的 AI，叫做 <strong>AI agent</strong>。這一頁記錄了整個過程，看完你也可以自己試試看。</p>
 
-    <h2>2. 安裝 Claude in Chrome</h2>
-    <ol>
-      <li>用 Chrome 打開 <a href="https://claude.ai/chrome" target="_blank" rel="noopener">claude.ai/chrome</a>，從 Chrome Web Store 安裝發行者為 Anthropic 的 extension。</li>
-      <li>點工具列上的 Claude 圖示，用同一個 Claude 帳號登入。</li>
-      <li>回到 Claude Code，確認瀏覽器已連線。</li>
-    </ol>
+    <h2>AI agent 是什麼？</h2>
+    <div class="compare">
+      <div>
+        <strong>一般的聊天 AI</strong>
+        <p>你問問題，它回答。像一個很會講解的老師，但<strong>只會動嘴</strong>，事情還是要你自己做。</p>
+      </div>
+      <div class="agent">
+        <strong>AI agent</strong>
+        <p>你交代任務，它會<strong>拿工具自己做</strong>：打指令、開檔案、寫程式、操作瀏覽器，做完還會檢查、回報結果。</p>
+      </div>
+    </div>
+    <p><strong>用三角洲來比喻：</strong>AI agent 就像你帶的一個<strong>幹員</strong>（agent 的英文本來就是「特工、幹員」）。你是隊長，負責下命令、做決定；幹員有自己的裝備和技能，收到命令就自己出任務。好的幹員遇到危險的決定，還會先回頭問隊長。</p>
 
-    <h2>3. 安裝開發工具</h2>
-    <p>由 Claude 在背景用 <code>winget</code> 安裝，全部使用預設選項：</p>
+    <h2>這次出任務的裝備</h2>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>軟體</th><th>winget ID</th><th>安裝版本</th></tr></thead>
+        <thead><tr><th>裝備</th><th>用途（白話版）</th></tr></thead>
         <tbody>
-          <tr><td>VS Code</td><td><code>Microsoft.VisualStudioCode</code></td><td>1.143.1</td></tr>
-          <tr><td>Node.js LTS</td><td><code>OpenJS.NodeJS.LTS</code></td><td>v26.13.0（npm 11.20.0）</td></tr>
-          <tr><td>Git</td><td><code>Git.Git</code></td><td>2.56.0</td></tr>
-          <tr><td>GitHub CLI</td><td><code>GitHub.cli</code></td><td>2.103.3</td></tr>
+          <tr><td><strong>Claude Code</strong></td><td>這次的 AI agent 本人。爸爸跟它講話，它負責動手做事</td></tr>
+          <tr><td><strong>Claude in Chrome</strong></td><td>讓 AI 可以操作瀏覽器：開網頁、點按鈕、檢查畫面</td></tr>
+          <tr><td><strong>VS Code</strong></td><td>寫程式用的編輯器，像寫作文用的 Word，但專門寫程式</td></tr>
+          <tr><td><strong>Node.js</strong></td><td>讓電腦能執行 JavaScript 程式的工具，之後做更進階的網站會用到</td></tr>
+          <tr><td><strong>Git</strong></td><td>程式的「存檔點」。每改一次就存一次，改壞了可以讀檔回去</td></tr>
+          <tr><td><strong>GitHub</strong></td><td>放程式的雲端倉庫，全世界的工程師都在用</td></tr>
+          <tr><td><strong>GitHub Pages</strong></td><td>把 GitHub 上的網頁變成一個網址，任何人都能打開看</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="note">安裝完後要開<strong>新的</strong>終端機視窗，PATH 才會更新，<code>node</code>、<code>git</code>、<code>gh</code>、<code>code</code> 這些指令才找得到。</div>
 
-    <h2>4. GitHub 授權（device flow）</h2>
-    <ol>
-      <li>Claude 先用 <code>gh auth status</code> 檢查，確認還沒登入。</li>
-      <li>在背景執行 <code>gh auth login --web</code>，取得一次性驗證碼。</li>
-      <li>Claude 用 Claude in Chrome 打開 <code>github.com/login/device</code>，把驗證碼填好。</li>
-      <li>本人確認帳號後，按 <strong>Continue</strong> 和 <strong>Authorize</strong>。</li>
-      <li>執行 <code>gh auth setup-git</code>，讓 Git 直接用 GitHub CLI 的登入資訊，之後 push 不用再輸入密碼。</li>
-    </ol>
+    <h2>任務紀錄</h2>
+    <p>下面是爸爸實際對 AI 說的話（有些經過簡化），以及 AI 做了什麼。</p>
 
-    <h2>5. 架站：GitHub Pages</h2>
+    <div class="mission">
+      <span class="no">MISSION 01</span>
+      <h3>設定規則</h3>
+      <p class="say">以後都用繁體中文回答，專有名詞可以保留英文。</p>
+      <p class="did">把這條規則寫進一個設定檔，以後每次對話都會自動遵守。</p>
+      <p class="lesson">AI 可以「記住」你的偏好，只要你把規則講清楚。</p>
+    </div>
+
+    <div class="mission">
+      <span class="no">MISSION 02</span>
+      <h3>安裝 Claude in Chrome</h3>
+      <p class="say">幫我安裝 Claude in Chrome。</p>
+      <p class="did">說明安裝步驟，但請爸爸自己按安裝；裝好後確認瀏覽器已經連上。</p>
+      <p class="lesson">安裝瀏覽器擴充功能這種事，AI 會讓人自己來做。</p>
+    </div>
+
+    <div class="mission">
+      <span class="no">MISSION 03</span>
+      <h3>安裝軟體、登入 GitHub</h3>
+      <p class="say">檢查並安裝 VS Code、Node.js、Git、GitHub CLI，缺什麼就裝什麼。然後完成 GitHub 授權，驗證碼幫我填好，我來登入和按 Authorize。</p>
+      <p class="did">在背景一口氣裝好四個軟體，開啟 GitHub 授權網頁、填好驗證碼，停下來等爸爸按 Authorize，再確認登入成功。</p>
+      <p class="lesson">登入、授權這種「鑰匙」等級的動作，一定由人來按，AI 只負責準備好。</p>
+    </div>
+
+    <div class="mission">
+      <span class="no">MISSION 04</span>
+      <h3>把對話變成網站</h3>
+      <p class="say">把我們的對話整理成網站，放到 GitHub（設成公開），用 GitHub Pages 做成公開網址，再用 Chrome 檢查每一頁。</p>
+      <p class="did">寫好四個網頁，準備上傳時被安全機制擋下來：要公開到網路上的東西，必須爸爸再確認一次。爸爸同意後才上傳、開啟網站，並逐頁檢查。</p>
+      <p class="lesson">公開到網路上的東西收不回來，所以 AI agent 會先停下來問。</p>
+    </div>
+
+    <div class="mission">
+      <span class="no">MISSION 05</span>
+      <h3>加圖片、整理標題</h3>
+      <p class="say">去網路上找圖放在適當的地方；標題、副標、結論要清楚；圖片放在 HERO 區，等比例縮放，寬度不超過文字區。</p>
+      <p class="did">到 Unsplash 找<strong>免費授權</strong>的照片，每頁放一張並標註攝影師；每頁加上清楚的結論區塊；用程式量出圖片寬度剛好等於文字區。</p>
+      <p class="lesson">網路上的圖不能隨便用，要找可以合法使用的，並寫出是誰拍的。</p>
+    </div>
+
+    <div class="mission">
+      <span class="no">MISSION 06</span>
+      <h3>幹員介紹和按鍵配置</h3>
+      <p class="say">請增加幹員介紹（附圖）和按鍵配置建議。</p>
+      <p class="did">上網查了好幾個攻略網站整理幹員技能。因為遊戲官方的角色圖有版權，AI 改成<strong>自己畫</strong>每個幹員的示意圖。不確定的中文名字，就老實只寫英文。</p>
+      <p class="lesson">好的 AI agent 不確定的事會說不確定，而不是亂編。</p>
+    </div>
+
+    <div class="mission">
+      <span class="no">MISSION 07</span>
+      <h3>改成三角洲風格</h3>
+      <p class="say">網頁以三角洲風格設計。</p>
+      <p class="did">把整個網站改成深色戰術介面：螢光綠、切角面板、瞄準角框。</p>
+      <p class="say">黑底情況下，灰階字體和部分圖有點不夠清晰，建議增加對比。</p>
+      <p class="did">把字調亮、用程式算出每種文字的「對比度」確認夠清楚，太暗的圖也換掉。</p>
+      <p class="lesson">第一次做不完美很正常。看完結果再給意見，AI 就會改得更好。</p>
+    </div>
+
+    <div class="mission">
+      <span class="no">MISSION 08</span>
+      <h3>設計網站小圖示</h3>
+      <p class="say">設計 3 個 favicon 讓我挑選。</p>
+      <p class="did">畫了三種設計，並模擬放在瀏覽器分頁上的樣子；爸爸選了 A「三角準星」後，做成三種尺寸放上網站。</p>
+      <p class="lesson">可以請 AI 多給幾個選項，再由你來決定。決定權在你。</p>
+    </div>
+
+    <div class="mission">
+      <span class="no">MISSION 09</span>
+      <h3>職業賽事和經濟系統</h3>
+      <p class="say">Delta 是否有職業競賽？……好喔，麻煩你了。</p>
+      <p class="did">查了新聞和賽事網站，整理成「職業賽事」頁；之後又把護甲、物資、特勤處的說明整理成「經濟系統」頁。</p>
+      <p class="lesson">先問問題，覺得有用再請 AI 整理下來，網站就這樣一頁一頁長大。</p>
+    </div>
+
+    <h2>AI agent 的安全守則</h2>
+    <p>這次過程中，AI 有幾件事一定會停下來，或交給爸爸自己做：</p>
+    <ul>
+      <li><strong>登入和授權</strong>：密碼、按 Authorize 這種事由人來做。</li>
+      <li><strong>公開到網路上</strong>：上傳公開網站前，會再確認一次。</li>
+      <li><strong>不用有版權的東西</strong>：遊戲官方美術不能直接拿來用，所以自己畫或找免費授權的圖。</li>
+      <li><strong>不洩漏個人資料</strong>：網站上沒有放爸爸的本名、email 或密碼。</li>
+      <li><strong>不確定就說不確定</strong>：查不到的資料會老實寫「請以官方公告為準」。</li>
+    </ul>
+    <p>這些也是你自己用 AI 時要記住的事。</p>
+
+    <h2>名詞小字典</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>名詞</th><th>意思</th></tr></thead>
+        <tbody>
+          <tr><td>AI agent</td><td>會自己拿工具做事的 AI，不只回答問題</td></tr>
+          <tr><td>提示詞（prompt）</td><td>你對 AI 說的話。說得越清楚，結果越好</td></tr>
+          <tr><td>終端機（terminal）</td><td>用打字下指令來操作電腦的視窗，AI agent 很常用</td></tr>
+          <tr><td>HTML / CSS</td><td>HTML 決定網頁上有什麼內容，CSS 決定長什麼樣子</td></tr>
+          <tr><td>repo</td><td>放一個專案所有檔案的地方，像一個專案資料夾</td></tr>
+          <tr><td>commit / push</td><td>commit 是存檔，push 是把存檔上傳到 GitHub</td></tr>
+          <tr><td>favicon</td><td>瀏覽器分頁上、網站名稱旁邊的小圖示</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>換你試試看</h2>
+    <p>找爸爸一起，打開 Claude Code，試試下面的挑戰。不用會寫程式，只要把想法講清楚：</p>
     <ol>
-      <li>把對話整理成這幾頁純 HTML + CSS 的靜態網站，不需要任何建置工具。</li>
-      <li>從 <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> 找免費授權的圖片放在每頁的 HERO 區，等比例縮放，寬度不超過內文區，並標註攝影師。</li>
-      <li>用 <code>gh repo create</code> 建立公開 repo，並 push 程式碼。</li>
-      <li>用 GitHub API 開啟 GitHub Pages，來源設為 <code>main</code> branch 的根目錄。</li>
-      <li>用 Claude in Chrome 打開網址，逐頁檢查。</li>
+      <li><strong>新手任務</strong>：「在幹員介紹頁加一段，介紹我最常用的幹員，以及我為什麼喜歡他。」</li>
+      <li><strong>進階任務</strong>：「幫我做一個小測驗頁，考爸爸 5 題三角洲的問題，答完會顯示分數。」</li>
+      <li><strong>高手任務</strong>：「幫我做一個新頁面，整理我最常玩的地圖和撤離點。」做完記得請 AI 用瀏覽器檢查一遍。</li>
     </ol>
+    <p><strong>小秘訣：</strong>說清楚「要做什麼、放在哪裡、做完怎麼檢查」，AI 就會做得很好。結果不滿意，就像這次爸爸一樣，直接說哪裡要改。</p>
+
+    <details>
+      <summary>給大人看的技術細節</summary>
+      <ul>
+        <li>語言偏好寫在使用者層級的 <code>CLAUDE.md</code>，所有專案都適用。</li>
+        <li>用 <code>winget</code> 安裝：VS Code 1.143.1、Node.js LTS v26.13.0（npm 11.20.0）、Git 2.56.0、GitHub CLI 2.103.3。安裝後要開新的終端機視窗，PATH 才會更新。</li>
+        <li>GitHub 登入用 device flow：<code>gh auth login --web</code>，再用 <code>gh auth setup-git</code> 讓 Git 使用 GitHub CLI 的憑證。</li>
+        <li>網站是純 HTML + CSS 的靜態網站，用 <code>gh repo create</code> 建立公開 repo，透過 GitHub API 開啟 GitHub Pages（<code>main</code> branch 根目錄）。</li>
+        <li>圖片來自 Unsplash 免費授權；favicon 以 SVG 為主，另有 32px PNG 和 180px apple-touch-icon。</li>
+      </ul>
+    </details>
 
     <h2>結論</h2>
     <div class="conclusion">
-      <p>整個過程本人只需要做三件事：安裝 Chrome extension、在 GitHub 按 Authorize、確認要公開網站。其他安裝、寫程式、上傳、檢查都由 Claude 在背景完成。</p>
+      <p>這個網站是<strong>爸爸當隊長、AI 當幹員</strong>一起完成的。爸爸負責想法和做決定，AI 負責動手做和檢查。你不用先學會寫程式，只要學會把事情講清楚，就能開始指揮自己的 AI agent。</p>
     </div>
   </main>
 
