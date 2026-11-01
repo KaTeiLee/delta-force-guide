@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>靈敏度換算</title>
+  <meta name="description" content="用 cm/360 把 CS2 靈敏度換算到三角洲行動，附計算器。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="index.html">三角洲攻略筆記</a>
+      <a href="index.html">首頁</a>
+      <a href="guide.html">入門到進階</a>
+      <a class="active" href="sensitivity.html">靈敏度換算</a>
+      <a href="setup.html">環境設定紀錄</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>靈敏度換算：CS2 → 三角洲</h1>
+    <p class="lead">原則是讓兩款遊戲的 <strong>cm/360</strong> 一樣：滑鼠移動多少公分，角色剛好轉一圈。這個距離相同，肌肉記憶就能直接帶過去。</p>
+
+    <h2>第一步：算出你在 CS2 的 cm/360</h2>
+    <p>CS2 的公式是公開的（yaw = 0.022）：</p>
+    <pre><code>cm/360 = 360 ÷ (0.022 × CS2 靈敏度 × DPI) × 2.54</code></pre>
+
+    <div class="card">
+      <div class="calc">
+        <label>CS2 靈敏度
+          <input id="sens" type="number" step="0.01" min="0" value="1.2">
+        </label>
+        <label>滑鼠 DPI
+          <input id="dpi" type="number" step="50" min="0" value="800">
+        </label>
+      </div>
+      <p class="result" id="out"></p>
+      <p id="edpi" style="margin:4px 0 0;color:var(--muted)"></p>
+    </div>
+
+    <h2>第二步：換成三角洲的數值（腰射）</h2>
+    <h3>方法 A：用換算工具（最省事）</h3>
+    <p>到 <a href="https://www.mouse-sensitivity.com/n/cs2-to-delta-force/" target="_blank" rel="noopener">mouse-sensitivity.com 的 CS2 → Delta Force 換算器</a>，輸入你的 CS2 靈敏度和 DPI，就會得出三角洲的數值。腰射換算免費；開鏡和各倍率瞄具的換算要付費的 Premium 版。</p>
+
+    <h3>方法 B：用尺自己量（免費、最準）</h3>
+    <ol>
+      <li>在桌上量出上面算好的距離，用膠帶在起點和終點做記號。</li>
+      <li>進三角洲的訓練場，找一個明顯的目標對準。</li>
+      <li>滑鼠從起點平移到終點，看準心是不是剛好轉一圈回到原目標。</li>
+      <li>轉過頭就調低靈敏度，轉不夠就調高。重複到剛好一圈。</li>
+    </ol>
+    <div class="note">有網站說三角洲的 yaw 跟 CS2 一樣，可以直接沿用同一個數字，但這只是單一來源，未經確認。建議用方法 B 實測一次。</div>
+
+    <h2>第三步：開鏡（ADS）靈敏度</h2>
+    <p>這部分最重要。CS 幾乎不開鏡，但三角洲大多開鏡打，而且遊戲可以分別設定紅點、2 倍、4 倍、狙擊鏡等的靈敏度。</p>
+    <ol>
+      <li><strong>先把腰射調到跟 CS2 一樣</strong>，這是基準。</li>
+      <li><strong>開鏡靈敏度先用遊戲預設</strong>，在訓練場打靶感受一下。</li>
+      <li>調整原則：
+        <ul>
+          <li><strong>紅點／全息（近中距離）</strong>：甩槍要跟得上，調到瞄到目標不會過頭也不會不夠。</li>
+          <li><strong>高倍鏡（遠距離）</strong>：寧可稍慢，求穩定。</li>
+        </ul>
+      </li>
+      <li><strong>最實用的測試</strong>：開鏡追蹤訓練場的移動靶，或練從一個靶甩到另一個靶。追得上、不會晃過頭，就差不多了。</li>
+    </ol>
+
+    <h2>小建議</h2>
+    <ul>
+      <li><strong>DPI 不要動</strong>，維持打 CS 的設定，只調遊戲內數值。</li>
+      <li><strong>調好後至少玩 3～5 天再微調</strong>，不要每局都改，肌肉記憶需要時間適應。</li>
+      <li>開鏡一直覺得怪的話，可以參考一起玩的朋友或孩子的設定，當作起點。</li>
+    </ul>
+
+    <h2>參考來源</h2>
+    <ul>
+      <li><a href="https://www.mouse-sensitivity.com/n/cs2-to-delta-force/" target="_blank" rel="noopener">CS2 to Delta Force Sens Converter（mouse-sensitivity.com）</a></li>
+      <li><a href="https://www.mouse-sensitivity.com/n/delta-force/" target="_blank" rel="noopener">Delta Force Sensitivity Converter（mouse-sensitivity.com）</a></li>
+      <li><a href="https://west-games.com/sensitivity-setting-converter/" target="_blank" rel="noopener">Delta Force Sensitivity Converter（west-games.com）</a></li>
+    </ul>
+  </main>
+
+  <footer>整理自與 Claude 的對話 · 2026 年 11 月 · <a href="index.html">回首頁</a></footer>
+
+  <script>
+    const sens = document.getElementById('sens');
+    const dpi = document.getElementById('dpi');
+    const out = document.getElementById('out');
+    const edpi = document.getElementById('edpi');
+    function calc() {
+      const s = parseFloat(sens.value), d = parseFloat(dpi.value);
+      if (!(s > 0) || !(d > 0)) {
+        out.textContent = '請輸入大於 0 的數字';
+        edpi.textContent = '';
+        return;
+      }
+      const cm = 360 / (0.022 * s * d) * 2.54;
+      out.textContent = '你的 cm/360：' + cm.toFixed(1) + ' cm';
+      edpi.textContent = 'eDPI（靈敏度 × DPI）：' + Math.round(s * d) + '　→ 在桌上量 ' + cm.toFixed(1) + ' cm 做記號';
+    }
+    sens.addEventListener('input', calc);
+    dpi.addEventListener('input', calc);
+    calc();
+  </script>
+</body>
+</html>

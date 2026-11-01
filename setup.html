@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>環境設定紀錄</title>
+  <meta name="description" content="這個網站是怎麼做出來的：用 Claude Code 安裝開發工具、登入 GitHub、架上 GitHub Pages。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="index.html">三角洲攻略筆記</a>
+      <a href="index.html">首頁</a>
+      <a href="guide.html">入門到進階</a>
+      <a href="sensitivity.html">靈敏度換算</a>
+      <a class="active" href="setup.html">環境設定紀錄</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>環境設定紀錄</h1>
+    <p class="lead">這個網站是在 Windows 上用 Claude Code（Claude 桌面版）一步步做出來的。以下是過程紀錄。</p>
+
+    <h2>1. 語言偏好</h2>
+    <p>在使用者層級的 <code>CLAUDE.md</code> 寫下「一律使用繁體中文回答，專有名詞可保留英文」。Claude Code 每次開對話都會讀這個檔案，所以不管在哪個專案都適用。</p>
+
+    <h2>2. 安裝 Claude in Chrome</h2>
+    <ol>
+      <li>用 Chrome 打開 <a href="https://claude.ai/chrome" target="_blank" rel="noopener">claude.ai/chrome</a>，從 Chrome Web Store 安裝發行者為 Anthropic 的 extension。</li>
+      <li>點工具列上的 Claude 圖示，用同一個 Claude 帳號登入。</li>
+      <li>回到 Claude Code，確認瀏覽器已連線。</li>
+    </ol>
+
+    <h2>3. 安裝開發工具</h2>
+    <p>由 Claude 在背景用 <code>winget</code> 安裝，全部使用預設選項：</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>軟體</th><th>winget ID</th><th>安裝版本</th></tr></thead>
+        <tbody>
+          <tr><td>VS Code</td><td><code>Microsoft.VisualStudioCode</code></td><td>1.143.1</td></tr>
+          <tr><td>Node.js LTS</td><td><code>OpenJS.NodeJS.LTS</code></td><td>v26.13.0（npm 11.20.0）</td></tr>
+          <tr><td>Git</td><td><code>Git.Git</code></td><td>2.56.0</td></tr>
+          <tr><td>GitHub CLI</td><td><code>GitHub.cli</code></td><td>2.103.3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">安裝完後要開<strong>新的</strong>終端機視窗，PATH 才會更新，<code>node</code>、<code>git</code>、<code>gh</code>、<code>code</code> 這些指令才找得到。</div>
+
+    <h2>4. GitHub 授權（device flow）</h2>
+    <ol>
+      <li>Claude 先用 <code>gh auth status</code> 檢查，確認還沒登入。</li>
+      <li>在背景執行 <code>gh auth login --web</code>，取得一次性驗證碼。</li>
+      <li>Claude 用 Claude in Chrome 打開 <code>github.com/login/device</code>，把驗證碼填好。</li>
+      <li>本人確認帳號後，按 <strong>Continue</strong> 和 <strong>Authorize</strong>。</li>
+      <li>執行 <code>gh auth setup-git</code>，讓 Git 直接用 GitHub CLI 的登入資訊，之後 push 不用再輸入密碼。</li>
+    </ol>
+
+    <h2>5. 架站：GitHub Pages</h2>
+    <ol>
+      <li>把對話整理成這幾頁純 HTML + CSS 的靜態網站，不需要任何建置工具。</li>
+      <li>用 <code>gh repo create</code> 建立公開 repo，並 push 程式碼。</li>
+      <li>用 GitHub API 開啟 GitHub Pages，來源設為 <code>main</code> branch 的根目錄。</li>
+      <li>用 Claude in Chrome 打開網址，逐頁檢查。</li>
+    </ol>
+  </main>
+
+  <footer>整理自與 Claude 的對話 · 2026 年 11 月 · <a href="index.html">回首頁</a></footer>
+</body>
+</html>
